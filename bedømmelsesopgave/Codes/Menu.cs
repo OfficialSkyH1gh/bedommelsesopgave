@@ -28,7 +28,7 @@ namespace bedømmelsesopgave.Codes
                 Console.WriteLine("3) for elev");
                 Console.WriteLine("4) exit");
                 Console.WriteLine("\r\nvælg en: ");
-                string vælger = Console.ReadLine();
+                string? vælger = Console.ReadLine();
 
                 switch (vælger)
                 {

@@ -14,8 +14,8 @@ namespace bedømmelsesopgave.Codes
     }
     internal class Search
     {
-        
-       
+
+
         public static void Fag()
         {
             Console.Clear();
@@ -26,34 +26,47 @@ namespace bedømmelsesopgave.Codes
             Console.WriteLine("-Grundlæggende programmering");
             Console.WriteLine("-Database programmering");
             Console.WriteLine("-Studieteknik");
-            try { string fagoptions = Console.ReadLine(); }
-            catch (NullReferenceException)
+            string? fagoptions = Console.ReadLine();
+            if (fagoptions == null)
             {
                 Console.WriteLine("Denne linjie kan ikke være null, Prøv igen");
                 System.Threading.Thread.Sleep(2500);
                 Fag();
             }
 
-            int rowsIn2DArray = H1.MyArray.GetLength(0);
-            int columnCount = H1.MyArray.GetLength(1);
-
-            for (int j = 0; j < rowsIn2DArray; j++)
+            H1.GetList().ForEach(e =>
             {
-                for (int k = 0; k < columnCount; k++)
+                if (fagoptions == e.ProgramName())
                 {
-                    string item = H1.MyArray[j, k].ToString();
-                    Console.WriteLine(item);
+                    Console.Clear();
+                    e.ProgramStudents().ForEach(f =>
+                    {
+                            Console.WriteLine(f.fornavn_ + " " + f.efternavn_);
+                    });
                 }
-            }
-        }
+            });
 
+            Console.ReadKey();
+            
+
+            //    int rowsIn2DArray = H1.MyArray.GetLength(0);
+            //    int columnCount = H1.MyArray.GetLength(1);
+
+            //    for (int j = 0; j < rowsIn2DArray; j++)
+            //    {
+            //        for (int k = 0; k < columnCount; k++)
+            //        {
+            //            string item = H1.MyArray[j, k].ToString();
+            //            Console.WriteLine(item);
+            //        }
+            //    }
+            //}
+        }
         public static void Elever()
         {
             Console.Clear();
             Console.WriteLine("skriv den elev du skal finde info om:");
             Console.WriteLine("");
-           
-
         }
 
 
@@ -64,5 +77,6 @@ namespace bedømmelsesopgave.Codes
             Console.WriteLine("");
 
         }
+        
     }
 }
